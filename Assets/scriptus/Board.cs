@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Board : MonoBehaviour {
 	public enum Cell {
