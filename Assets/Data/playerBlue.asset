@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6778fb9eebfb96046b03cbf63c205ba3, type: 3}
   m_Name: playerBlue
   m_EditorClassIdentifier: 
-  playerName: 
+  playerName: Blue
   cellType: 0
-  position: {x: 0, y: 0}
+  position: {x: 3, y: -3}
   heldBitcons: 0
   storedBitcoins: 0
