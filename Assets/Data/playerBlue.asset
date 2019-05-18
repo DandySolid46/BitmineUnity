@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerBlue
   m_EditorClassIdentifier: 
   playerName: Blue
-  cellType: 0
+  cellType: 4
   position: {x: 3, y: -3}
   heldBitcons: 0
   storedBitcoins: 0

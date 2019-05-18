@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerPurple
   m_EditorClassIdentifier: 
   playerName: Purple
-  cellType: 0
+  cellType: 2
   position: {x: 3, y: 3}
   heldBitcons: 0
   storedBitcoins: 0

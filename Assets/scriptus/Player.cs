@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public PlayerData data;
-    public BoardData boardData;
+    public Grid grid;
     Renderer renderer;
     void Awake() {
         renderer = GetComponentInChildren<MeshRenderer>();
@@ -26,6 +26,6 @@ public class Player : MonoBehaviour {
         }
     }
     void Update(){
-        transform.position = boardData.grid.GetCellCenterLocal((Vector3Int)data.position);
+        transform.localPosition = grid.GetCellCenterLocal((Vector3Int)data.position);
     }
 }
