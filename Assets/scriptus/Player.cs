@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
         //transform.localPosition = grid.GetCellCenterLocal((Vector3Int)data.position);
     }
     
-    public void Up()
-        =>Ds
+    public void Up(){
+        
+    }
 }
