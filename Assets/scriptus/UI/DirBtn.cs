@@ -28,6 +28,10 @@ public class DirBtn : MonoBehaviour{
        var rot = transform.localRotation.eulerAngles;
        rot.z = DirectionAngles[(int)direction];
        transform.localRotation = Quaternion.Euler(rot);
-
-   }
+    }
+    public Direction GetDir() => direction;
+    public void SetDir(Direction dir){
+        direction = dir;
+        ApplyDirection();
+    }
 }
