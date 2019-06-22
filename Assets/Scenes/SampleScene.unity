@@ -1758,6 +1758,12 @@ MonoBehaviour:
   - {fileID: 1006508855}
   - {fileID: 51878384}
   - {fileID: 1840426299}
+  sheetGrafic: {fileID: 2025824923}
+  sheetColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &2027099354
 GameObject:
   m_ObjectHideFlags: 0

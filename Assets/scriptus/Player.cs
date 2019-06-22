@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     Renderer renderer;
     void Awake() {
         renderer = GetComponentInChildren<MeshRenderer>();
+        data.position = data.startPosition;
     }
     void Start() {
         renderer.material.color = GetColorFromType(data.cellType);
@@ -35,7 +36,13 @@ public class Player : MonoBehaviour {
         //transform.localPosition = grid.GetCellCenterLocal((Vector3Int)data.position);
     }
     
-    public void Up(){
-        
-    }
+    public void Up()
+        => data.position.y = Mathf.Clamp(data.position.y +1, -3,3);
+    public void Down()
+        => data.position.y = Mathf.Clamp(data.position.y -1, -3,3);
+    public void Left()
+        => data.position.x = Mathf.Clamp(data.position.x -1, -3,3);
+    public void Right()
+        => data.position.x = Mathf.Clamp(data.position.x +1, -3,3);
+
 }
