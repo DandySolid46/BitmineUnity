@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 
@@ -8,21 +9,38 @@ public class PlayerControl : MonoBehaviour {
     public List<Player> players;
     public static int currentPlayer = 0;
     public Graphic sheetGrafic;
+    public float moveDalay = 0.5f;
 
     public Color[] sheetColors = {
         Color.blue, Color.red, Color.magenta, Color.yellow
     };
-
+ 
     void Awake(){
         UpdateSheetColor();
     }
 
     public void Execute(){
-        var player = players[currentPlayer];
-        CallDirection(player, direction1.GetDir());
-        CallDirection(player, direction2.GetDir());
-        CallDirection(player, direction3.GetDir());
+        StartCoroutine(ExecuteProply());
+    }
 
+    IEnumerator ExecuteProply(){
+        var player = players[currentPlayer];
+
+        CallDirection(player, direction1.GetDir());
+        if (direction1.direction != DirBtn.Direction.Nill){
+            yield return new WaitForSeconds(moveDalay);
+        }
+        CallDirection(player, direction2.GetDir());
+        if (direction2.direction != DirBtn.Direction.Nill){
+            yield return new WaitForSeconds(moveDalay);
+        }
+        CallDirection(player, direction3.GetDir());
+        if (direction3.direction != DirBtn.Direction.Nill){
+            yield return new WaitForSeconds(moveDalay);
+        }
+        NextPlayer();
+    }
+    void NextPlayer(){
         currentPlayer = (currentPlayer + 1) % 4;
         UpdateSheetColor();
     }
