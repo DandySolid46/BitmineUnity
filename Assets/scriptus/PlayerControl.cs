@@ -35,11 +35,14 @@ public class PlayerControl : MonoBehaviour {
             yield return new WaitForSeconds(moveDalay);
         }
         CallDirection(player, direction2.GetDir());
-        if (direction2.direction != DirBtn.Direction.Nill){
+
+        if (direction2.direction != DirBtn.Direction.Nill &&
+            direction2.direction != direction1.direction) {
             yield return new WaitForSeconds(moveDalay);
         }
         CallDirection(player, direction3.GetDir());
-        if (direction3.direction != DirBtn.Direction.Nill){
+        if (direction3.direction != DirBtn.Direction.Nill &&
+            direction3.direction != direction2.direction) {
             yield return new WaitForSeconds(moveDalay);
         }
         NextPlayer();
