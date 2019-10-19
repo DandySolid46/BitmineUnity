@@ -45,6 +45,9 @@ public class PlayerControl : MonoBehaviour {
             direction3.direction != direction2.direction) {
             yield return new WaitForSeconds(moveDalay);
         }
+
+        ++player.data.storedBitcoins;
+
         NextPlayer();
         executeButton.SetActive(true);
     }

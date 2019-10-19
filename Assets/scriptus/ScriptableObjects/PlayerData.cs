@@ -5,6 +5,6 @@ public class PlayerData : ScriptableObject {
     public string playerName;
     public Board.Cell cellType;
     public Vector2Int startPosition, position;
-    public int heldBitcons , storedBitcoins;
+    public int heldBitcoins , storedBitcoins;
     
 }
