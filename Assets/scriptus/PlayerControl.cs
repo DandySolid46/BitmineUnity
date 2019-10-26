@@ -17,6 +17,13 @@ public class PlayerControl : MonoBehaviour {
         Color.blue, Color.red, Color.magenta, Color.yellow
     };
  
+    void Start(){
+        foreach (var p in players){
+            p.data.heldBitcoins = 0;
+            p.data.storedBitcoins = 0;
+        }
+    }
+
     void Awake(){
         UpdateSheetColor();
     }
@@ -30,27 +37,23 @@ public class PlayerControl : MonoBehaviour {
 
         var player = players[currentPlayer];
 
-        CallDirection(player, direction1.GetDir());
-        if (direction1.direction != DirBtn.Direction.Nill){
-            yield return new WaitForSeconds(moveDalay);
-        }
-        CallDirection(player, direction2.GetDir());
-
-        if (direction2.direction != DirBtn.Direction.Nill &&
-            direction2.direction != direction1.direction) {
-            yield return new WaitForSeconds(moveDalay);
-        }
-        CallDirection(player, direction3.GetDir());
-        if (direction3.direction != DirBtn.Direction.Nill &&
-            direction3.direction != direction2.direction) {
-            yield return new WaitForSeconds(moveDalay);
-        }
-
-        ++player.data.storedBitcoins;
+        yield return PlayerAction(player, direction1);
+        yield return PlayerAction(player, direction2);
+        yield return PlayerAction(player, direction3);
 
         NextPlayer();
         executeButton.SetActive(true);
     }
+    IEnumerator PlayerAction(Player player, DirBtn direction){
+        CallDirection(player, direction.GetDir());
+        if (direction.direction != DirBtn.Direction.Nill){
+            yield return new WaitForSeconds(moveDalay);
+        }
+        if(player.data.position == Vector2Int.zero && player.data.heldBitcoins < 3) {
+            ++player.data.heldBitcoins;
+        }
+    }
+
     void NextPlayer(){
         currentPlayer = (currentPlayer + 1) % 4;
         UpdateSheetColor();
