@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour {
     public Graphic sheetGrafic;
     public float moveDalay = 0.5f;
     public GameObject executeButton;
+    public Board board;
 
 
     public Color[] sheetColors = {
@@ -45,12 +46,22 @@ public class PlayerControl : MonoBehaviour {
         executeButton.SetActive(true);
     }
     IEnumerator PlayerAction(Player player, DirBtn direction){
+        var lastPos = player.data.position;
         CallDirection(player, direction.GetDir());
+        var cell = board.GetCell(player.data.position);
+        if (player.data.position == Vector2Int.zero){
+            if(player.data.heldBitcoins< 3)
+                ++player.data.heldBitcoins;
+            player.data.position = lastPos;
+        }
+
+
         if (direction.direction != DirBtn.Direction.Nill){
             yield return new WaitForSeconds(moveDalay);
         }
-        if(player.data.position == Vector2Int.zero && player.data.heldBitcoins < 3) {
-            ++player.data.heldBitcoins;
+        if (player.data.position == player.data.startPosition){
+            player.data.storedBitcoins += player.data.heldBitcoins;
+            player.data.heldBitcoins = 0;
         }
     }
 
@@ -73,8 +84,8 @@ public class PlayerControl : MonoBehaviour {
             case DirBtn.Direction.Right:
                 player.Right();
                 break;
-
         }
+
     }
     void UpdateSheetColor()
         => sheetGrafic.color = sheetColors[currentPlayer];

@@ -30,6 +30,10 @@ public class Board : MonoBehaviour {
 		// Meio.
 		board[3][3] = Cell.Mine;
 	}
+	public Cell GetCell(Vector2Int pos)
+		=> GetCell(pos.x, pos.y);
+	public void SetCell(Vector2Int pos, Cell type)
+		=> SetCell(pos.x,pos.y,type);
 
 	public Cell GetCell(int x, int y) {
 		return board[x][y];
